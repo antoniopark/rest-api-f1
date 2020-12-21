@@ -9,18 +9,18 @@ POST http://localhost:3000/api/f1/teams
 Content-Type: application/json
 
 {
-    "team": "Scuderia Ferrari Mission Winnow",
-    "year_foundation": 1950,
-    "driver1": "Charles Leclerc",
-    "driver2": "Sebastian Vettel",
-    "team_chief": "Mattia Binotto"
+    "team": "Mercedes-AMG Petronas F1 Team",
+    "year_foundation": 1970,
+    "driver1": "Lewis Hamilton",
+    "driver2": "Valtteri Bottas",
+    "team_chief": "Toto Wolff"
 }
 
 ###
-GET http://localhost:3000/api/f1/
+GET http://localhost:3000/api/f1/teams/5fdae68c4707eba3c8853fe5
 
 ###
-DELETE http://localhost:3000/api/f1/teams/
+DELETE http://localhost:3000/api/f1/teams/5fdae1df32cdcea393ed78d1
 
 ###
 PUT http://localhost:3000/api/f1/teams/5fdb04c8818761accb1f84e5
@@ -29,7 +29,6 @@ Content-Type: application/json
 {
     "team": "Scuderia Ferrari Mission Winnow"
 }
-
 
 
 
