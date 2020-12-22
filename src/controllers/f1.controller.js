@@ -29,26 +29,44 @@ export const createTeam = async (req, res) => {
 
 export const findOneTeam = async (req, res) => {
     const { id } = req.params;
+    try {
+        const team = await Team.findById(id);
+        if (!team) return res.status(404).json({ message: `Team with id ${id} does not exist` });
 
-    const team = await Team.findById(req.params.id);
-    if (!team) return res.status(404).json({ message: `Team with id ${id} does not exist` });
-
-    res.json(team);
-}
+        res.json(team);
+    } catch (error) {
+        res.status(500).json({
+            message: error.message || `Error retrieving team with id: ${id}`,
+        });
+    }
+};
 
 export const deleteTeam = async (req, res) => {
-    const data = await Team.findByIdAndDelete(req.params.id);
-    res.json({
-        message: 'The Team has been eliminated'
-    });
-}
+    const { id } = req.params;
+    try {
+        const data = await Team.findByIdAndDelete(id);
+        res.json({
+            message: 'The Team has been eliminated'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: `Cannot deleting team with id: ${id}`,
+        });
+    }
+};
 
 export const updateTeam = async (req, res) => {
-    await Team.findByIdAndUpdate(req.params.id, req.body);
-    res.json({
-        message: 'Team was updated successfully'
-    });
-}
+    try {
+        await Team.findByIdAndUpdate(req.params.id, req.body);
+        res.json({
+            message: 'Team was updated successfully'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message || 'Something goes wrong updating team'
+        })
+    }
+};
 
 //Drivers
 
@@ -78,23 +96,44 @@ export const createDriver = async (req, res) => {
 };
 
 export const findOneDriver = async (req, res) => {
-    const driver = await Driver.findById(req.params.id);
-    res.json(driver);
-}
+    const { id } = req.params;
+    try {
+        const driver = await Driver.findById(id);
+        if (!driver) return res.status(404).json({ message: `Driver with id ${id} does not exist` });
+        res.json(driver);
+    } catch (error) {
+        res.status(500).json({
+            message: error.message || `Error retrieving driver with id: ${id}`,
+        });
+    }
+};
 
 export const deleteDriver = async (req, res) => {
-    const data = await Driver.findByIdAndDelete(req.params.id);
-    res.json({
-        message: 'The Driver has been eliminated'
-    });
-}
+    const { id } = req.params
+    try {
+        const data = await Driver.findByIdAndDelete(id);
+        res.json({
+            message: 'The Driver has been eliminated'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: `Cannot deleting driver with id: ${id}`,
+        });
+    }
+};
 
 export const updateDriver = async (req, res) => {
-    await Driver.findByIdAndUpdate(req.params.id, req.body);
-    res.json({
-        message: 'Driver was updated successfully'
-    });
-}
+    try {
+        await Driver.findByIdAndUpdate(req.params.id, req.body);
+        res.json({
+            message: 'Driver was updated successfully'
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: error.message || 'Something goes wrong updating driver'
+        })
+    }
+};
 
 
 /*

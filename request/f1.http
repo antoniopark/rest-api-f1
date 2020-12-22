@@ -9,7 +9,7 @@ POST http://localhost:3000/api/f1/teams
 Content-Type: application/json
 
 {
-    "team": "Mercedes-AMG Petronas F1 Team",
+    "team": "prueba",
     "year_foundation": 1970,
     "driver1": "Lewis Hamilton",
     "driver2": "Valtteri Bottas",
@@ -17,17 +17,17 @@ Content-Type: application/json
 }
 
 ###
-GET http://localhost:3000/api/f1/teams/5fdae68c4707eba3c8853fe5
+GET http://localhost:3000/api/f1/teams/5fe139349b251a085807233d
 
 ###
-DELETE http://localhost:3000/api/f1/teams/5fdae1df32cdcea393ed78d1
+DELETE http://localhost:3000/api/f1/teams/5fe139349b251a085807233d
 
 ###
-PUT http://localhost:3000/api/f1/teams/5fdb04c8818761accb1f84e5
+PUT http://localhost:3000/api/f1/teams/5fe13bd97078e9088820bed9
 Content-Type: application/json
 
 {
-    "team": "Scuderia Ferrari Mission Winnow"
+    "team": "Aston Martin Red Bull Racing"
 }
 
 
@@ -41,27 +41,24 @@ POST http://localhost:3000/api/f1/drivers
 Content-Type: application/json
 
 {
-    "name": "Sainz",
+    "name": "demooo",
     "team": "BWT Racing Point F1 Team",
     "country": "Mexico",
     "date_birth": "26/01/1990"
 }
 
 ###
-GET http://localhost:3000/api/f1/drivers/
+GET http://localhost:3000/api/f1/drivers/5fe139c29b251a085807233e
 
 ###
-DELETE http://localhost:3000/api/f1/drivers/5fdaff63a579c3aa97b77b2a
+DELETE http://localhost:3000/api/f1/drivers/5fe139c29b251a085807233e
 
 ###
-PUT http://localhost:3000/api/f1/drivers/5fdaff63a579c3aa97b77b2a
+PUT http://localhost:3000/api/f1/drivers/5fdafa3a3cd984a7dd9228ef
 Content-Type: application/json
 
 {
-    "name": "Lance Stroll",
-    "team": "BWT Racing Point F1 Team",
-    "country": "Canada",
-    "date_birth": "29/10/1998"
+    "country": "México"
 }
 
 ###
