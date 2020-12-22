@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const teamSchema = new Schema({
     team: {
@@ -27,4 +28,5 @@ const teamSchema = new Schema({
     timestamps: true
 })
 
+teamSchema.plugin(mongoosePaginate);
 export default model('Team',teamSchema)

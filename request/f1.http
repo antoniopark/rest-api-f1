@@ -5,6 +5,9 @@
 GET http://localhost:3000/api/f1/teams
 
 ###
+GET http://localhost:3000/api/f1/teams?page=0&size=4
+
+###
 POST http://localhost:3000/api/f1/teams
 Content-Type: application/json
 
@@ -37,6 +40,10 @@ Content-Type: application/json
 GET http://localhost:3000/api/f1/drivers
 
 ###
+GET http://localhost:3000/api/f1/drivers?page=0&size=4
+
+
+###
 POST http://localhost:3000/api/f1/drivers
 Content-Type: application/json
 
@@ -62,7 +69,7 @@ Content-Type: application/json
 }
 
 ###
-//Pilotos campeones pendiente
+//Pilotos campeones - pendiente
 //GET http://localhost:3000/api/f1/drivers/champions
 
 

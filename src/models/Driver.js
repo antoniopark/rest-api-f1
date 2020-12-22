@@ -1,4 +1,5 @@
 import { Schema, model } from 'mongoose';
+import mongoosePaginate from 'mongoose-paginate-v2';
 
 const driverSchema = new Schema({
     name: {
@@ -27,4 +28,5 @@ const driverSchema = new Schema({
     timestamps: true
 })
 
+driverSchema.plugin(mongoosePaginate);
 export default model('Driver',driverSchema)

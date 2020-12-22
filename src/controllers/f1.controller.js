@@ -1,13 +1,29 @@
 import Team from '../models/Team';
 import Driver from '../models/Driver';
-import { response } from 'express';
+import {getPaginationTeams,getPaginationDrivers} from '../libs/getPagination';
+import { get } from 'mongoose';
 
 //Teams
 
 export const findAllTeams = async (req, res) => {
     try {
-        const teams = await Team.find();
-        res.json(teams);
+        const {size, page, team} = req.query;
+        const condition = team 
+        ? {
+            team: { $regex: new RegExp(team), $options: "i"},
+        } 
+        : {};
+        const {limit,offset} = getPaginationTeams(page,size)
+        const teams = await Team.paginate(condition ,{offset, limit});
+        res.json(
+           {
+            totalItems: teams.totalDocs,
+            teams: teams.docs,
+            totalPages: teams.totalPages,
+            currentPage: teams.page - 1
+        }
+
+        );
     } catch (error) {
         res.status(500).json({
             message: error.message || 'Something goes wrong retrieving the teams'
@@ -72,8 +88,22 @@ export const updateTeam = async (req, res) => {
 
 export const findAllDrivers = async (req, res) => {
     try {
-        const drivers = await Driver.find();
-        res.json(drivers);
+        const {size, page, name} = req.query;
+        const condition = name 
+        ? {
+            name: { $regex: new RegExp(name), $options: "i"},
+        } 
+        : {};
+
+        const {limit,offset} = getPaginationDrivers(page,size)
+        const drivers = await Driver.paginate(condition,{offset, limit});
+        res.json({
+            totalItems: drivers.totalDocs,
+            drivers: drivers.docs,
+            totalPages: drivers.totalPages,
+            currentPage: drivers.page - 1
+
+        });
 
     } catch (error) {
         res.status(500).json({
