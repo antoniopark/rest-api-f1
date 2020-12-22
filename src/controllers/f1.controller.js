@@ -33,7 +33,7 @@ export const findAllTeams = async (req, res) => {
 
 export const createTeam = async (req, res) => {
     try {
-        const newTeam = new Team({ team: req.body.team, year_foundation: req.body.year_foundation, driver1: req.body.driver1, driver2: req.body.driver2, team_chief: req.body.team_chief });
+        const newTeam = new Team({ team: req.body.team,avatar: req.body.avatar, year_foundation: req.body.year_foundation, driver1: req.body.driver1, driver2: req.body.driver2, team_chief: req.body.team_chief });
         const teamSaved = await newTeam.save();
         res.json(teamSaved);
     } catch (error) {
@@ -102,7 +102,6 @@ export const findAllDrivers = async (req, res) => {
             drivers: drivers.docs,
             totalPages: drivers.totalPages,
             currentPage: drivers.page - 1
-
         });
 
     } catch (error) {
@@ -114,7 +113,7 @@ export const findAllDrivers = async (req, res) => {
 
 export const createDriver = async (req, res) => {
     try {
-        const newDriver = new Driver({ name: req.body.name, team: req.body.team, country: req.body.country, date_birth: req.body.date_birth, world_champ: req.body.world_champ });
+        const newDriver = new Driver({ name: req.body.name,avatar: req.body.avatar, team: req.body.team, country: req.body.country, date_birth: req.body.date_birth, championships: req.body.championships });
         const driverSaved = await newDriver.save();
         res.json(driverSaved);
 

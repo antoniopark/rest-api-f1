@@ -4,3 +4,5 @@
 dist
 node_modules
 request/f1.http
+.DS_Store
+request/f1.http

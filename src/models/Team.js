@@ -7,6 +7,10 @@ const teamSchema = new Schema({
         required: true,
         trim: true
     },
+    avatar: {
+        type: String,
+        required: true
+    },
     year_foundation: {
         type: Number,
         trim: true

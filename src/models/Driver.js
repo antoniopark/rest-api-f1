@@ -6,6 +6,10 @@ const driverSchema = new Schema({
         type: String,
         required: true
     },
+    avatar: {
+        type: String,
+        required: true
+    },
     team: {
         type: String,
         trim: true
@@ -18,7 +22,7 @@ const driverSchema = new Schema({
         type: String,
         required: true
     },
-    world_champ: {
+    championships: {
         type: Number,
         required: true,
         default: 0
